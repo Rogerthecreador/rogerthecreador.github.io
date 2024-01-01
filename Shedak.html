@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shedak - Explora el Mundo</title>
+    <style>
+        body {
+            font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+            margin: 0;
+            background: linear-gradient(45deg, #005c7c, #017899, #0296b8, #02b4d7, #3eccea, #6fddf1, #94eef8, #b4ffff);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+
+        section {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            margin-bottom: 50px;
+        }
+
+        article {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        article:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: #0F949A;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            color: #000;
+        }
+
+        .additional-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .additional-button {
+            padding: 10px;
+            background-color: #0F949A;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .additional-button:hover {
+            background-color: #075E66;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a Shedak</h1>
+    </header>
+
+    <section id="mainSection">
+        <article onclick="showAdditionalButtons('registroSection')">
+            <h2>Registra información</h2>
+        </article>
+
+        <article onclick="showAdditionalButtons('consultaSection')">
+            <h2>Consulta información</h2>
+        </article>
+    </section>
+
+    <section id="registroSection" class="hidden">
+        <div class="additional-buttons">
+            <!-- ... (añade aquí los botones adicionales según tus necesidades) -->
+        </div>
+        <button onclick="showMain()">Volver al menú principal</button>
+    </section>
+
+    <section id="consultaSection" class="hidden">
+        <div class="additional-buttons">
+            <!-- ... (añade aquí los botones adicionales según tus necesidades) -->
+        </div>
+        <button onclick="showMain()">Volver al menú principal</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Shedak. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function showAdditionalButtons(sectionId) {
+            document.getElementById('mainSection').classList.add('hidden');
+            document.getElementById(sectionId).classList.remove('hidden');
+
+            var additionalButtonsContainer = document.getElementById(sectionId).getElementsByClassName('additional-buttons')[0];
+            additionalButtonsContainer.innerHTML = ""; // Limpiar el contenedor antes de agregar nuevos botones
+
+            // Agregar cinco botones adicionales
+            for (let i = 1; i <= 5; i++) {
+                var button = document.createElement('button');
+                button.className = 'additional-button';
+                button.innerText = 'Botón ' + i;
+                additionalButtonsContainer.appendChild(button);
+            }
+        }
+
+        function showMain() {
+            document.getElementById('registroSection').classList.add('hidden');
+            document.getElementById('consultaSection').classList.add('hidden');
+            document.getElementById('mainSection').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
+
